@@ -1,7 +1,4 @@
-"""
-Functions for cell type annotation based on Leiden clustering
-"""
-
+# cell_annotations.py
 import os
 import scanpy as sc
 import pandas as pd
