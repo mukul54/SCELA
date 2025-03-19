@@ -8,7 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import scanpy as sc
-from .config import VIS_DIR
+from .config import VIS_DIR, DYNAMIC_FIGURE_SIZE
 
 def generate_visualizations(adata):
     """
@@ -32,22 +32,78 @@ def generate_visualizations(adata):
     # 1. Distribution by sample
     if 'sample_id' in adata.obs.columns:
         print("Generating sample distribution plot...")
-        plt.figure(figsize=(14, 8))
         
-        # Generate cross-tabulation
+        # Determine dynamic figure size if enabled
+        n_cell_types = len(adata.obs[cell_type_column].unique())
+        n_samples = len(adata.obs['sample_id'].unique())
+        
+        if DYNAMIC_FIGURE_SIZE:
+            # Adjust figure width based on number of samples
+            fig_width = max(14, min(20, n_samples * 1.5))
+            # Adjust figure height based on number of cell types (for legend)
+            fig_height = max(8, min(16, n_cell_types * 0.5))
+            plt.figure(figsize=(fig_width, fig_height))
+        else:
+            plt.figure(figsize=(16, 10))
+        
+        # Generate cross-tabulation - each column (sample) should sum to 100%
         sample_dist = pd.crosstab(
             adata.obs[cell_type_column], 
             adata.obs['sample_id'],
             normalize='columns'
         ) * 100  # Convert to percentage
         
-        # Plot stacked bar chart
-        sample_dist.plot(kind='bar', stacked=True, colormap='viridis')
-        plt.title('Cell Type Distribution Across Samples', fontsize=14, pad=20)
-        plt.xlabel('Sample ID', fontsize=12)
-        plt.ylabel('Percentage', fontsize=12)
-        plt.xticks(rotation=45, ha='right')
-        plt.legend(title=cell_type_display, bbox_to_anchor=(1.05, 1), loc='upper left')
+        # Verify percentages sum to 100 for each sample
+        for col in sample_dist.columns:
+            if not (99.0 <= sample_dist[col].sum() <= 101.0):
+                print(f"Warning: Percentages for sample {col} sum to {sample_dist[col].sum():.2f}%, not 100%")
+                # Normalize to exactly 100% to fix any floating point issues
+                sample_dist[col] = sample_dist[col] / sample_dist[col].sum() * 100
+        
+        # Plot a properly stacked bar chart where each sample adds up to exactly 100%
+        ax = sample_dist.T.plot(kind='bar', stacked=True, figsize=(16, 10), colormap='viridis')
+        
+        # Set proper title and labels
+        plt.title('Cell Type Distribution Within Each Sample', fontsize=16, pad=20)
+        plt.xlabel('Sample ID', fontsize=14, labelpad=10)
+        plt.ylabel('Percentage of Cells (%)', fontsize=14, labelpad=10)
+        
+        # Improve tick readability
+        plt.xticks(rotation=45, ha='right', fontsize=10)
+        plt.yticks(fontsize=10)
+        
+        # Add horizontal grid lines
+        plt.grid(axis='y', linestyle='--', alpha=0.6)
+        
+        # Ensure y-axis goes from 0 to 100%
+        plt.ylim(0, 100)
+        
+        # Add a horizontal line at 100% for visual reference
+        plt.axhline(y=100, color='black', linestyle='-', alpha=0.3, linewidth=1)
+        
+        # Add percentage annotations at important thresholds
+        for y in [25, 50, 75]:
+            plt.axhline(y=y, color='black', linestyle=':', alpha=0.2, linewidth=0.5)
+            plt.text(len(sample_dist.columns), y, f'{y}%', va='center', ha='left', fontsize=8, alpha=0.7)
+        
+        # Determine optimal number of legend columns based on number of categories
+        # More categories = more columns, but not too many to make it unreadable
+        n_categories = len(adata.obs[cell_type_column].unique())
+        n_legend_cols = max(1, min(n_categories // 5, 5))
+        
+        # Position legend outside plot to avoid overlap
+        # The bbox_to_anchor ensures it's placed to the right of the plot
+        plt.legend(title=cell_type_display, bbox_to_anchor=(1.02, 1), 
+                  loc='upper left', ncol=n_legend_cols)
+        
+        # Adjust figure size to accommodate the legend if needed
+        if n_categories > 15:
+            # Get the current figure
+            fig = plt.gcf()
+            # Get the current size
+            fig_size = fig.get_size_inches()
+            # Add extra width for the legend
+            fig.set_size_inches(fig_size[0] + 3, fig_size[1])
         plt.tight_layout()
         
         # Save figure
@@ -125,12 +181,38 @@ def generate_visualizations(adata):
     cell_counts['Percentage'] = (cell_counts['Count'] / cell_counts['Count'].sum() * 100).round(2)
     
     # Generate a simple visualization of the counts
-    plt.figure(figsize=(10, 6))
-    sns.barplot(x='Cell Type', y='Count', data=cell_counts)
+    # Dynamic figure size based on number of cell types
+    if DYNAMIC_FIGURE_SIZE:
+        fig_width = max(10, min(20, len(cell_counts) * 0.8))
+        plt.figure(figsize=(fig_width, 8))
+    else:
+        plt.figure(figsize=(10, 6))
+        
+    # Sort by count for better visualization
+    cell_counts_sorted = cell_counts.sort_values('Count', ascending=False)
+    
+    # Use a horizontal bar chart for better readability with many cell types
+    if len(cell_counts) > 10:
+        ax = sns.barplot(y='Cell Type', x='Count', data=cell_counts_sorted)
+        # Add count labels to the bars
+        for i, p in enumerate(ax.patches):
+            width = p.get_width()
+            ax.text(width + width*0.02, p.get_y() + p.get_height()/2,
+                    f'{width:.0f}', ha='left', va='center')
+        plt.xlabel('Count', fontsize=12)
+        plt.ylabel('Cell Type', fontsize=12)
+    else:
+        ax = sns.barplot(x='Cell Type', y='Count', data=cell_counts_sorted)
+        # Add count labels to the bars
+        for i, p in enumerate(ax.patches):
+            height = p.get_height()
+            ax.text(p.get_x() + p.get_width()/2, height + height*0.02,
+                    f'{height:.0f}', ha='center')
+        plt.xlabel('Cell Type', fontsize=12)
+        plt.ylabel('Count', fontsize=12)
+        plt.xticks(rotation=45, ha='right')
+        
     plt.title('Cell Type Counts', fontsize=14)
-    plt.xlabel('Cell Type', fontsize=12)
-    plt.ylabel('Count', fontsize=12)
-    plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
     
     # Save the figure

@@ -4,7 +4,7 @@ import scanpy as sc
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from .config import RESULTS_DIR, VIS_DIR
+from .config import RESULTS_DIR, VIS_DIR, RESOLUTIONS, MARKER_GENE_RESOLUTIONS, DEFAULT_MARKER_RESOLUTION
 
 def annotate_cell_types(adata):
     """
@@ -27,17 +27,16 @@ def annotate_cell_types(adata):
     # Create visualizations directory
     os.makedirs(VIS_DIR, exist_ok=True)
     
-    # List of resolutions to try
-    resolutions = [0.25, 0.5, 1.0]
+    # Get resolutions from config
     leiden_keys = []
     
     # Run Leiden clustering at different resolutions
-    for res in resolutions:
+    for res in RESOLUTIONS:
         leiden_key = f'leiden_{res}'
         leiden_keys.append(leiden_key)
         
         print(f"Computing Leiden clusters at resolution {res}...")
-        sc.tl.leiden(adata, resolution=res, key_added=leiden_key)
+        sc.tl.leiden(adata, resolution=res, key_added=leiden_key, flavor="igraph", n_iterations=2)
         print(f"Generated {len(adata.obs[leiden_key].unique())} clusters at resolution {res}")
         
         # Make sure the column is categorical
@@ -85,7 +84,7 @@ def annotate_cell_types(adata):
     # Set the default leiden clusters as the cell_type
     adata.obs['leiden'] = adata.obs[default_leiden]
     adata.obs['cell_type'] = adata.obs[default_leiden]
-    adata.obs['cell_type_display'] = 'Cluster ' + adata.obs[default_leiden]
+    adata.obs['cell_type_display'] = 'Cluster ' + adata.obs[default_leiden].astype(str)
     
     print(f"Using Leiden clustering at resolution 0.5 as default cell type annotation.")
     print(f"Found {len(adata.obs['cell_type'].unique())} clusters")
@@ -94,13 +93,38 @@ def annotate_cell_types(adata):
     for cluster, count in adata.obs['cell_type'].value_counts().items():
         print(f"  Cluster {cluster}: {count} cells")
     
-    # Identify marker genes for each cluster using the default resolution
-    print("Identifying marker genes for default clusters...")
-    try:
-        # Calculate marker genes for the default clusters
-        sc.tl.rank_genes_groups(adata, default_leiden, method='wilcoxon')
-        print("Successfully identified marker genes for all clusters")
-    except Exception as e:
-        print(f"Error identifying marker genes: {e}")
+    # Identify marker genes for each selected resolution
+    for res in MARKER_GENE_RESOLUTIONS:
+        # Find the corresponding leiden key
+        leiden_key = next((key for key in leiden_keys if f"{res}" in key), None)
+        if leiden_key is None:
+            print(f"Warning: Could not find leiden clusters for resolution {res}. Skipping marker gene identification for this resolution.")
+            continue
+            
+        marker_file = f"{RESULTS_DIR}/cluster_markers_res_{res}.csv"
+        if os.path.exists(marker_file):
+            print(f"Marker gene file already exists at {marker_file}. Skipping marker gene identification for resolution {res}.")
+        else:
+            # Identify marker genes for this resolution
+            print(f"Identifying marker genes for clusters at resolution {res}...")
+            try:
+                # Calculate marker genes for these clusters
+                sc.tl.rank_genes_groups(adata, leiden_key, method='wilcoxon')
+                
+                # Extract and save marker genes
+                if 'rank_genes_groups' in adata.uns:
+                    # Create folder for marker genes if it doesn't exist
+                    os.makedirs(os.path.dirname(marker_file), exist_ok=True)
+                    
+                    # Get results into a dataframe
+                    marker_df = sc.get.rank_genes_groups_df(adata, group=None)
+                    marker_df.to_csv(marker_file)
+                    print(f"Saved marker genes for resolution {res} to {marker_file}")
+                else:
+                    print(f"Warning: No marker genes found in adata.uns for resolution {res}")
+                    
+                print(f"Successfully identified marker genes for clusters at resolution {res}")
+            except Exception as e:
+                print(f"Error identifying marker genes for resolution {res}: {e}")
     
     return adata

@@ -13,11 +13,13 @@ from matplotlib.gridspec import GridSpec
 # Use sc.settings directly instead of importing scanpy.settings
 sc.settings.verbosity = 1  # Reduce verbosity 
 sc.settings.set_figure_params(dpi=150)
-from .config import RESULTS_DIR, VIS_DIR, N_PCS, N_NEIGHBORS, RESOLUTION, N_TOP_GENES, TOP_N_MARKERS
+from .config import (RESULTS_DIR, VIS_DIR, N_PCS, N_NEIGHBORS, RESOLUTION, 
+                   N_TOP_GENES, TOP_N_MARKERS, MARKER_GENE_RESOLUTIONS, 
+                   FORCE_RECOMPUTE_MARKERS)
 
 def identify_marker_genes(adata):
     """
-    Identify marker genes for each cluster
+    Identify marker genes for each cluster at multiple resolutions specified in config
     """
     print("\n=== Identifying Marker Genes ===")
     
@@ -25,37 +27,30 @@ def identify_marker_genes(adata):
     plt.rcParams['axes.titlesize'] = 14  # Larger title font
     plt.rcParams['axes.labelsize'] = 12  # Larger axis label font
     
-    # Perform clustering if not already done
-    if 'leiden' not in adata.obs:
-        print("Performing clustering...")
-        
-        # Compute PCA if not already computed
-        if 'X_pca' not in adata.obsm:
-            print("Computing PCA...")
-            # Scale the data for PCA if needed
-            if 'log1p' not in adata.uns:
-                print("Normalizing and log-transforming data...")
-                sc.pp.normalize_total(adata, target_sum=1e4)
-                sc.pp.log1p(adata)
-                adata.uns['log1p'] = {'base': None}
-                
-            # Calculate highly variable genes if needed
-            if 'highly_variable' not in adata.var.columns:
-                print("Finding highly variable genes...")
-                sc.pp.highly_variable_genes(adata, n_top_genes=N_TOP_GENES, flavor='seurat')
-                
-            # Compute PCA
-            sc.pp.pca(adata, use_highly_variable=True, svd_solver='arpack')
-            print(f"Computed {adata.obsm['X_pca'].shape[1]} principal components")
+    # Make sure we have a preprocessed dataset with PCA and neighbors
+    # Compute PCA if not already computed
+    if 'X_pca' not in adata.obsm:
+        print("Computing PCA...")
+        # Scale the data for PCA if needed
+        if 'log1p' not in adata.uns:
+            print("Normalizing and log-transforming data...")
+            sc.pp.normalize_total(adata, target_sum=1e4)
+            sc.pp.log1p(adata)
+            adata.uns['log1p'] = {'base': None}
             
-        # Computing neighborhood graph
+        # Calculate highly variable genes if needed
+        if 'highly_variable' not in adata.var.columns:
+            print("Finding highly variable genes...")
+            sc.pp.highly_variable_genes(adata, n_top_genes=N_TOP_GENES, flavor='seurat')
+            
+        # Compute PCA
+        sc.pp.pca(adata, use_highly_variable=True, svd_solver='arpack')
+        print(f"Computed {adata.obsm['X_pca'].shape[1]} principal components")
+    
+    # Computing neighborhood graph if needed
+    if 'neighbors' not in adata.uns:
         print("Computing neighbor graph...")
         sc.pp.neighbors(adata, n_neighbors=N_NEIGHBORS, n_pcs=N_PCS)
-        
-        # Use igraph flavor to avoid future warnings
-        print("Running Leiden clustering...")
-        sc.tl.leiden(adata, resolution=RESOLUTION, flavor='igraph', n_iterations=2, directed=False)
-        print(f"Found {len(adata.obs['leiden'].unique())} clusters")
     
     # Compute UMAP embedding if not already present
     if 'X_umap' not in adata.obsm:
@@ -68,29 +63,48 @@ def identify_marker_genes(adata):
         sc.pp.log1p(adata)
         adata.uns['log1p'] = {'base': None}
     
-    # Find markers for each cluster
-    print("Finding marker genes for each cluster...")
-    # Copy data to avoid performance warnings related to DataFrame fragmentation
-    adata_copy = adata.copy() 
-    sc.tl.rank_genes_groups(adata_copy, 'leiden', method='wilcoxon')
-    # Copy results back to original adata
-    adata.uns['rank_genes_groups'] = adata_copy.uns['rank_genes_groups'].copy()
-    del adata_copy
-    
-    # Extract top markers into a dataframe
-    print("Extracting top markers...")
-    markers_df = sc.get.rank_genes_groups_df(adata, group=None)
-    
-    # Save the marker genes to file
-    marker_file = os.path.join(RESULTS_DIR, "cluster_markers.csv")
-    markers_df.to_csv(marker_file)
-    print(f"Saved cluster markers to {marker_file}")
+    # Identify marker genes for each resolution
+    for resolution in MARKER_GENE_RESOLUTIONS:
+        # Create a leiden key for this resolution
+        leiden_key = f'leiden_res{resolution}'
+        
+        # Check if we need to compute clustering at this resolution
+        if leiden_key not in adata.obs or FORCE_RECOMPUTE_MARKERS:
+            print(f"Running Leiden clustering at resolution {resolution}...")
+            sc.tl.leiden(adata, resolution=resolution, key_added=leiden_key, 
+                        flavor='igraph', n_iterations=2, directed=False)
+            print(f"Found {len(adata.obs[leiden_key].unique())} clusters at resolution {resolution}")
+        
+        # File to save marker genes for this resolution
+        marker_file = os.path.join(RESULTS_DIR, f"marker_genes_res{resolution}.csv")
+        
+        # Skip if markers already exist and we're not forcing recomputation
+        if os.path.exists(marker_file) and not FORCE_RECOMPUTE_MARKERS:
+            print(f"Marker genes for resolution {resolution} already exist at {marker_file}")
+            continue
+        
+        print(f"Finding marker genes for clusters at resolution {resolution}...")
+        # Make a copy to avoid performance warnings
+        adata_copy = adata.copy() 
+        sc.tl.rank_genes_groups(adata_copy, leiden_key, method='wilcoxon', key_added=f'rank_genes_res{resolution}')
+        
+        # Copy results back to original adata and clean up
+        adata.uns[f'rank_genes_res{resolution}'] = adata_copy.uns[f'rank_genes_res{resolution}'].copy()
+        del adata_copy
+        
+        # Extract top markers into a dataframe
+        print(f"Extracting top markers for resolution {resolution}...")
+        markers_df = sc.get.rank_genes_groups_df(adata, group=None, key=f'rank_genes_res{resolution}')
+        
+        # Save the marker genes to file
+        markers_df.to_csv(marker_file)
+        print(f"Saved markers for resolution {resolution} to {marker_file}")
     
     return adata
 
 def visualize_marker_genes(adata, flavor='igraph'):
     """
-    Generate expression heatmaps for marker genes across cell types
+    Generate expression heatmaps for marker genes across cell types for all specified resolutions
     
     Parameters
     ----------
@@ -120,10 +134,27 @@ def visualize_marker_genes(adata, flavor='igraph'):
     # Create a display-friendly version of the column name for plot titles
     cell_type_display = 'Cell Type' if cell_type_column == 'cell_type' else 'Predicted Cell Type'
     
-    # Take top N genes from previously computed markers
-    marker_genes_per_cluster = {}
-    genes_to_show = []
-    if 'rank_genes_groups' in adata.uns and adata.uns['rank_genes_groups']:
+    # Visualize marker genes for each resolution
+    for resolution in MARKER_GENE_RESOLUTIONS:
+        resolution_key = f'rank_genes_res{resolution}'
+        leiden_key = f'leiden_res{resolution}'
+        
+        # Skip if marker data for this resolution doesn't exist
+        if resolution_key not in adata.uns or not adata.uns[resolution_key]:
+            print(f"No marker gene data found for resolution {resolution}, skipping...")
+            continue
+            
+        # Skip if output file already exists and we're not forcing recomputation
+        heatmap_file = os.path.join(VIS_DIR, f"marker_heatmap_res{resolution}.pdf")
+        if os.path.exists(heatmap_file) and not FORCE_RECOMPUTE_VISUALIZATION:
+            print(f"Marker gene heatmap for resolution {resolution} already exists at {heatmap_file}")
+            continue
+            
+        print(f"Visualizing marker genes for resolution {resolution}...")
+        
+        # Take top N genes from previously computed markers
+        marker_genes_per_cluster = {}
+        genes_to_show = []
         try:
             # Create dictionary of marker genes grouped by cell type for better visualization
             for cluster in adata.obs[cell_type_column].cat.categories:
@@ -132,22 +163,31 @@ def visualize_marker_genes(adata, flavor='igraph'):
                 if not any(cluster_cells):
                     continue
                     
-                # Find the most common Leiden cluster for this cell type
-                leiden_counts = adata.obs.loc[cluster_cells, 'leiden'].value_counts()
+                # Find the most common Leiden cluster for this cell type at this resolution
+                if leiden_key not in adata.obs:
+                    # If we don't have clustering at this resolution, skip
+                    print(f"Warning: Leiden clustering at resolution {resolution} not found")
+                    continue
+                    
+                leiden_counts = adata.obs.loc[cluster_cells, leiden_key].value_counts()
                 if leiden_counts.empty:
                     continue
                     
                 leiden_cluster = leiden_counts.idxmax()
                 
                 # Get top marker genes for this leiden cluster
-                top_genes = sc.get.rank_genes_groups_df(
-                    adata, 
-                    group=leiden_cluster,
-                    key='rank_genes_groups'
-                ).head(TOP_N_MARKERS)['names'].tolist()
-                
-                marker_genes_per_cluster[cluster] = top_genes
-                genes_to_show.extend(top_genes)
+                try:
+                    top_genes = sc.get.rank_genes_groups_df(
+                        adata, 
+                        group=leiden_cluster,
+                        key=resolution_key
+                    ).head(TOP_N_MARKERS)['names'].tolist()
+                    
+                    marker_genes_per_cluster[cluster] = top_genes
+                    genes_to_show.extend(top_genes)
+                except Exception as e:
+                    print(f"Error extracting marker genes for cluster {leiden_cluster} at resolution {resolution}: {e}")
+                    continue
             
             # De-duplicate genes
             genes_to_show = list(dict.fromkeys(genes_to_show))
