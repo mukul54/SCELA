@@ -112,7 +112,7 @@ def convert_to_hdf5():
     print(f"Conversion completed in {elapsed_time:.2f} seconds")
     print(f"HDF5 file created at: {OUTPUT_H5_FILE}")
 
-def create_anndata_object():
+def create_anndata_object(force_recreate_ann=False):
     """
     Create an AnnData object combining UMI data with metadata
     """
@@ -120,7 +120,7 @@ def create_anndata_object():
     start_time = time()
     
     # Check if output file already exists
-    if os.path.exists(OUTPUT_H5AD_FILE):
+    if os.path.exists(OUTPUT_H5AD_FILE) and not force_recreate_ann:
         print(f"AnnData file already exists at {OUTPUT_H5AD_FILE}")
         return sc.read_h5ad(OUTPUT_H5AD_FILE)
     
@@ -133,12 +133,17 @@ def create_anndata_object():
     print("Loading metadata...")
     metadata = pd.read_csv(METADATA_FILE, index_col=0)
     
-    # Check if we need to create or update the HDF5 file first
-    if not os.path.exists(OUTPUT_H5_FILE):
-        print(f"HDF5 file not found at {OUTPUT_H5_FILE}. Running conversion first...")
-        convert_to_hdf5()
-    else:
-        print(f"Checking HDF5 file at {OUTPUT_H5_FILE}...")
+    # Clean and validate metadata columns
+    required_columns = ['Samples', 'Sex', 'Age', 'Smoking', 'Stages', 'EGFR', 'Histology']
+    missing_cols = [col for col in required_columns if col not in metadata.columns]
+    if missing_cols:
+        raise ValueError(f"Metadata missing required columns: {missing_cols}")
+    
+    # Convert smoking status to categorical
+    metadata['Smoking'] = metadata['Smoking'].astype('category')
+    
+    # Clean stage information
+    metadata['Stages'] = metadata['Stages'].str.replace(r'[^IVABC]', '', regex=True)
     
     # Get sample information from column names using the HDF5 file
     print("Extracting sample information...")
@@ -175,7 +180,7 @@ def create_anndata_object():
             print("The file may be corrupted. Re-creating from scratch...")
             os.remove(OUTPUT_H5_FILE)
             convert_to_hdf5()
-            return create_anndata_object()
+            return create_anndata_object(force_recreate_ann=True)
         
         # Create a sparse matrix to save memory
         print(f"Creating sparse matrix with {num_features} genes and {len(sample_columns)} cells...")
@@ -202,40 +207,16 @@ def create_anndata_object():
             
             row_idx += num_genes_in_chunk
     
-    # Extract metadata from column names to create observation dataframe
-    obs_data = []
-    for col in sample_columns:
-        # Extract sample type and ID
-        match = re.search(r'_(LUNG_[NT]?\d+|LN_\d+|NS_\d+|EBUS_\d+|BRONCHO_\d+|EFFUSION_\d+)', col)
-        sample_id = match.group(1) if match else "Unknown"
-        
-        # Determine tissue type
-        if 'LUNG_T' in sample_id:
-            tissue_type = 'Tumor'
-        elif 'LUNG_N' in sample_id:
-            tissue_type = 'Normal'
-        else:
-            tissue_type = sample_id.split('_')[0]  # LN, NS, EBUS, etc.
-            
-        obs_data.append({
-            'sample_id': sample_id,
-            'tissue_type': tissue_type
-        })
+    # Create observation dataframe with proper sample IDs
+    obs_df = pd.DataFrame({'Samples': sample_columns})
     
-    obs_df = pd.DataFrame(obs_data, index=sample_columns)
+    # Clean sample IDs by extracting core identifier
+    obs_df['Samples'] = obs_df['Samples'].str.extract(r'(LUNG_[NT]\d+|LN_\d+|NS_\d+|EBUS_\d+|BRONCHO_\d+|EFFUSION_\d+)')[0]
     
-    # Try to merge additional metadata
-    try:
-        # Match cells with metadata
-        for idx, row in obs_df.iterrows():
-            sample_match = metadata[metadata['sample_id'] == row['sample_id']]
-            if not sample_match.empty:
-                for col in metadata.columns:
-                    if col != 'sample_id':
-                        obs_df.loc[idx, col] = sample_match.iloc[0][col]
-    except Exception as e:
-        print(f"Warning: Could not merge all metadata: {e}")
-    
+    # Merge metadata using pandas merge
+    obs_df = pd.merge(obs_df, metadata, on='Samples', how='left')
+    obs_df.set_index(pd.Index(sample_columns), inplace=True)
+
     # Create var DataFrame (gene annotations)
     var_df = pd.DataFrame(index=all_genes)
     
@@ -277,7 +258,7 @@ def perform_basic_analysis(adata=None):
             adata = sc.read_h5ad(OUTPUT_H5AD_FILE)
         else:
             print("AnnData file not found. Creating it first...")
-            adata = create_anndata_object()
+            adata = create_anndata_object(force_recreate_ann=True)
     
     print("\n=== Basic Analysis of GSE131907 Lung Cancer Dataset ===")
     print(f"Dataset dimensions: {adata.shape[0]} cells × {adata.shape[1]} genes")
@@ -332,10 +313,13 @@ def main():
         convert_to_hdf5()
     else:
         print(f"HDF5 file already exists at {OUTPUT_H5_FILE}")
-    
+    force_recreate_ann = True
     # Step 2: Create AnnData object
     if not os.path.exists(OUTPUT_H5AD_FILE):
         adata = create_anndata_object()
+    elif force_recreate_ann:
+        print(f"force_recreate_ann flag is enabled recreating it")
+        adata = create_anndata_object(force_recreate_ann)
     else:
         print(f"AnnData file already exists at {OUTPUT_H5AD_FILE}")
         adata = sc.read_h5ad(OUTPUT_H5AD_FILE)
