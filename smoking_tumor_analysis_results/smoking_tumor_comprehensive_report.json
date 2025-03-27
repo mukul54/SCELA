@@ -1,0 +1,1802 @@
+{
+  "metadata": {
+    "analysis_date": "2025-03-27 22:16:16",
+    "analysis_type": "Smoking-Tumor Interaction Analysis",
+    "data_source": "/home/mukul.ranjan/Documents/cancer/SCELA/smoking_tumor_interaction"
+  },
+  "summary_statistics": {
+    "total_cell_types_analyzed": 18,
+    "overall_degs_by_smoking": [
+      {
+        "Smoking_Status": "Cur",
+        "Up_Regulated": 6955,
+        "Down_Regulated": 2499,
+        "Total_DEGs": 9454
+      },
+      {
+        "Smoking_Status": "Ex",
+        "Up_Regulated": 6466,
+        "Down_Regulated": 4101,
+        "Total_DEGs": 10567
+      },
+      {
+        "Smoking_Status": "Never",
+        "Up_Regulated": 6442,
+        "Down_Regulated": 4737,
+        "Total_DEGs": 11179
+      }
+    ]
+  },
+  "opposite_regulation": {
+    "total_genes_with_opposite_regulation": 161,
+    "never_vs_ex_count": 82,
+    "never_vs_cur_count": 54,
+    "ex_vs_cur_count": 25,
+    "top_genes_with_opposite_regulation": [
+      {
+        "Gene": "RP11-298J20.3",
+        "Never_log2FC": -1.0483004,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": 2.739088,
+        "Never_padj": 0.0413488037225332,
+        "Ex_padj": 1.0,
+        "Cur_padj": 0.0027215423640001,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Down in Never, Up in Current",
+        "magnitude": 3.7873884
+      },
+      {
+        "Gene": "AKR1C2",
+        "Never_log2FC": 3.3786001,
+        "Ex_log2FC": -0.6298173,
+        "Cur_log2FC": 0.0,
+        "Never_padj": 2.1952752642885957e-63,
+        "Ex_padj": 0.0013270807192268,
+        "Cur_padj": 1.0,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 3.3786001
+      },
+      {
+        "Gene": "DEFB1",
+        "Never_log2FC": 3.0462189,
+        "Ex_log2FC": -2.7753801,
+        "Cur_log2FC": 0.0,
+        "Never_padj": 8.028191370157171e-79,
+        "Ex_padj": 2.895755340218865e-46,
+        "Cur_padj": 1.0,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 3.0462189
+      },
+      {
+        "Gene": "TREM2",
+        "Never_log2FC": 1.7392393,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -1.1405295,
+        "Never_padj": 7.804776984499639e-53,
+        "Ex_padj": 1.0,
+        "Cur_padj": 2.3657188324138667e-55,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 2.8797688
+      },
+      {
+        "Gene": "IGFBP5",
+        "Never_log2FC": 2.6964378,
+        "Ex_log2FC": -1.0797307,
+        "Cur_log2FC": 0.0,
+        "Never_padj": 8.468460890130705e-51,
+        "Ex_padj": 0.000810795667909,
+        "Cur_padj": 1.0,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 2.6964378
+      },
+      {
+        "Gene": "DONSON",
+        "Never_log2FC": 2.634701,
+        "Ex_log2FC": -0.7852478,
+        "Cur_log2FC": 0.0,
+        "Never_padj": 3.2624563787231976e-63,
+        "Ex_padj": 1.813585310855428e-15,
+        "Cur_padj": 1.0,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 2.634701
+      },
+      {
+        "Gene": "VSIG4",
+        "Never_log2FC": 0.7954866,
+        "Ex_log2FC": -1.3325232,
+        "Cur_log2FC": -1.5633994,
+        "Never_padj": 4.002693042553248e-33,
+        "Ex_padj": 5.996081342802938e-109,
+        "Cur_padj": 4.565549942835535e-95,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 2.358886
+      },
+      {
+        "Gene": "VSIG4",
+        "Never_log2FC": 0.7954866,
+        "Ex_log2FC": -1.3325232,
+        "Cur_log2FC": -1.5633994,
+        "Never_padj": 4.002693042553248e-33,
+        "Ex_padj": 5.996081342802938e-109,
+        "Cur_padj": 4.565549942835535e-95,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 2.358886
+      },
+      {
+        "Gene": "HBA1",
+        "Never_log2FC": -1.3669035,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": 0.95440036,
+        "Never_padj": 0.0027376680514211,
+        "Ex_padj": 1.0,
+        "Cur_padj": 0.0019134874807989,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Down in Never, Up in Current",
+        "magnitude": 2.32130386
+      },
+      {
+        "Gene": "GPX3",
+        "Never_log2FC": 1.5511792,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.67209095,
+        "Never_padj": 2.3048671686279317e-178,
+        "Ex_padj": 1.0,
+        "Cur_padj": 0.0039363939842528,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 2.22327015
+      },
+      {
+        "Gene": "CD9",
+        "Never_log2FC": 1.5926054,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.60235393,
+        "Never_padj": 0.0,
+        "Ex_padj": 1.0,
+        "Cur_padj": 4.333973465009114e-32,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 2.19495933
+      },
+      {
+        "Gene": "ARHGEF10L",
+        "Never_log2FC": 1.2915249,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.82331526,
+        "Never_padj": 9.032915063208772e-24,
+        "Ex_padj": 1.0,
+        "Cur_padj": 0.0084524414914751,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 2.11484016
+      },
+      {
+        "Gene": "RRAGD",
+        "Never_log2FC": 1.0678271,
+        "Ex_log2FC": -0.553437,
+        "Cur_log2FC": -1.0213113,
+        "Never_padj": 3.270346024454359e-38,
+        "Ex_padj": 1.0711667375874147e-09,
+        "Cur_padj": 1.2454061703661176e-15,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 2.0891384
+      },
+      {
+        "Gene": "RRAGD",
+        "Never_log2FC": 1.0678271,
+        "Ex_log2FC": -0.553437,
+        "Cur_log2FC": -1.0213113,
+        "Never_padj": 3.270346024454359e-38,
+        "Ex_padj": 1.0711667375874147e-09,
+        "Cur_padj": 1.2454061703661176e-15,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 2.0891384
+      },
+      {
+        "Gene": "AKR1C1",
+        "Never_log2FC": 2.0631914,
+        "Ex_log2FC": -1.0824699,
+        "Cur_log2FC": 0.0,
+        "Never_padj": 1.3215988254573227e-23,
+        "Ex_padj": 0.0074331851564493,
+        "Cur_padj": 1.0,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 2.0631914
+      },
+      {
+        "Gene": "XXbac-BPG299F13.17",
+        "Never_log2FC": -1.4153554,
+        "Ex_log2FC": -0.67274165,
+        "Cur_log2FC": 0.6187002,
+        "Never_padj": 1.1220955169345477e-16,
+        "Ex_padj": 1.1060647039592643e-05,
+        "Cur_padj": 1.4382345204960083e-10,
+        "Pattern_Type": "Ex_vs_Cur",
+        "Description": "Down in Ex, Up in Current",
+        "magnitude": 2.0340556
+      },
+      {
+        "Gene": "XXbac-BPG299F13.17",
+        "Never_log2FC": -1.4153554,
+        "Ex_log2FC": -0.67274165,
+        "Cur_log2FC": 0.6187002,
+        "Never_padj": 1.1220955169345477e-16,
+        "Ex_padj": 1.1060647039592643e-05,
+        "Cur_padj": 1.4382345204960083e-10,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Down in Never, Up in Current",
+        "magnitude": 2.0340556
+      },
+      {
+        "Gene": "AKR1C3",
+        "Never_log2FC": 0.79495645,
+        "Ex_log2FC": -1.6303359,
+        "Cur_log2FC": -1.2106597,
+        "Never_padj": 6.468394282126547e-28,
+        "Ex_padj": 1.1278266400126608e-56,
+        "Cur_padj": 6.398331890017799e-19,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 2.00561615
+      },
+      {
+        "Gene": "AKR1C3",
+        "Never_log2FC": 0.79495645,
+        "Ex_log2FC": -1.6303359,
+        "Cur_log2FC": -1.2106597,
+        "Never_padj": 6.468394282126547e-28,
+        "Ex_padj": 1.1278266400126608e-56,
+        "Cur_padj": 6.398331890017799e-19,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 2.00561615
+      },
+      {
+        "Gene": "IRF9",
+        "Never_log2FC": -0.55935824,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": 1.3701112,
+        "Never_padj": 0.0001806878237004,
+        "Ex_padj": 1.0,
+        "Cur_padj": 1.3725380507465954e-130,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Down in Never, Up in Current",
+        "magnitude": 1.92946944
+      },
+      {
+        "Gene": "MAL",
+        "Never_log2FC": -1.0567093,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": 0.7975974,
+        "Never_padj": 4.187802486010516e-18,
+        "Ex_padj": 1.0,
+        "Cur_padj": 1.4269943134859014e-19,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Down in Never, Up in Current",
+        "magnitude": 1.8543067
+      },
+      {
+        "Gene": "PDE3B",
+        "Never_log2FC": -1.1261448,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": 0.6843564,
+        "Never_padj": 5.9922921019298145e-19,
+        "Ex_padj": 1.0,
+        "Cur_padj": 2.7543360097750126e-10,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Down in Never, Up in Current",
+        "magnitude": 1.8105012
+      },
+      {
+        "Gene": "IGHA1",
+        "Never_log2FC": 0.796638,
+        "Ex_log2FC": 1.4743795,
+        "Cur_log2FC": -0.99018556,
+        "Never_padj": 5.640819849708541e-50,
+        "Ex_padj": 1.6479469968268477e-245,
+        "Cur_padj": 6.714521309016377e-54,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.78682356
+      },
+      {
+        "Gene": "IGHA1",
+        "Never_log2FC": 0.796638,
+        "Ex_log2FC": 1.4743795,
+        "Cur_log2FC": -0.99018556,
+        "Never_padj": 5.640819849708541e-50,
+        "Ex_padj": 1.6479469968268477e-245,
+        "Cur_padj": 6.714521309016377e-54,
+        "Pattern_Type": "Ex_vs_Cur",
+        "Description": "Up in Ex, Down in Current",
+        "magnitude": 1.78682356
+      },
+      {
+        "Gene": "MGST2",
+        "Never_log2FC": 1.1774358,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.60233754,
+        "Never_padj": 3.483995605003583e-225,
+        "Ex_padj": 1.0,
+        "Cur_padj": 2.1823254108137312e-13,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.77977334
+      },
+      {
+        "Gene": "GPNMB",
+        "Never_log2FC": 0.83413845,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.93391365,
+        "Never_padj": 3.198354929585323e-99,
+        "Ex_padj": 1.0,
+        "Cur_padj": 4.099299968740468e-72,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.7680521
+      },
+      {
+        "Gene": "HSD17B14",
+        "Never_log2FC": 1.1002518,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.616349,
+        "Never_padj": 4.6291170811180775e-28,
+        "Ex_padj": 1.0,
+        "Cur_padj": 0.000110434196528,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.7166008
+      },
+      {
+        "Gene": "CDCP1",
+        "Never_log2FC": 0.84201014,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.84423065,
+        "Never_padj": 2.152193596346803e-18,
+        "Ex_padj": 1.0,
+        "Cur_padj": 0.000246202526924,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.6862407899999998
+      },
+      {
+        "Gene": "TCL1A",
+        "Never_log2FC": -1.6760185,
+        "Ex_log2FC": 1.2633452,
+        "Cur_log2FC": 0.0,
+        "Never_padj": 5.623985828718069e-15,
+        "Ex_padj": 2.0993414549774223e-08,
+        "Cur_padj": 1.0,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Down in Never, Up in Ex",
+        "magnitude": 1.6760185
+      },
+      {
+        "Gene": "CATSPER1",
+        "Never_log2FC": 0.8363796,
+        "Ex_log2FC": -0.63860625,
+        "Cur_log2FC": -0.8260547,
+        "Never_padj": 2.0564593539984658e-17,
+        "Ex_padj": 3.55374861851124e-10,
+        "Cur_padj": 7.749450354334676e-06,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 1.6624343000000001
+      },
+      {
+        "Gene": "CATSPER1",
+        "Never_log2FC": 0.8363796,
+        "Ex_log2FC": -0.63860625,
+        "Cur_log2FC": -0.8260547,
+        "Never_padj": 2.0564593539984658e-17,
+        "Ex_padj": 3.55374861851124e-10,
+        "Cur_padj": 7.749450354334676e-06,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.6624343000000001
+      },
+      {
+        "Gene": "CTSD",
+        "Never_log2FC": 1.0886952,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.56175625,
+        "Never_padj": 0.0,
+        "Ex_padj": 1.0,
+        "Cur_padj": 2.0145166937601882e-64,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.65045145
+      },
+      {
+        "Gene": "PDE4D",
+        "Never_log2FC": -0.79080474,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": 0.83730936,
+        "Never_padj": 0.0037563309845235,
+        "Ex_padj": 1.0,
+        "Cur_padj": 1.865877262945116e-24,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Down in Never, Up in Current",
+        "magnitude": 1.6281141
+      },
+      {
+        "Gene": "MACC1",
+        "Never_log2FC": 1.0787349,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.53299147,
+        "Never_padj": 2.2649414398924506e-44,
+        "Ex_padj": 1.0,
+        "Cur_padj": 0.0073649023908586,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.61172637
+      },
+      {
+        "Gene": "SCGB3A1",
+        "Never_log2FC": 0.0,
+        "Ex_log2FC": 0.5719351,
+        "Cur_log2FC": -1.609344,
+        "Never_padj": 1.0,
+        "Ex_padj": 2.437119280100059e-06,
+        "Cur_padj": 3.7186106806202166e-39,
+        "Pattern_Type": "Ex_vs_Cur",
+        "Description": "Up in Ex, Down in Current",
+        "magnitude": 1.609344
+      },
+      {
+        "Gene": "HOXB6",
+        "Never_log2FC": 1.6033596,
+        "Ex_log2FC": -0.68846965,
+        "Cur_log2FC": 0.0,
+        "Never_padj": 3.2806536197119918e-18,
+        "Ex_padj": 0.0005677518798612,
+        "Cur_padj": 1.0,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 1.6033596
+      },
+      {
+        "Gene": "TLCD2",
+        "Never_log2FC": 0.5875315,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.99734247,
+        "Never_padj": 4.092027833943089e-07,
+        "Ex_padj": 1.0,
+        "Cur_padj": 0.0070656273705681,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.5848739699999999
+      },
+      {
+        "Gene": "PCDH9",
+        "Never_log2FC": 0.0,
+        "Ex_log2FC": -0.9136372,
+        "Cur_log2FC": 1.5368925,
+        "Never_padj": 1.0,
+        "Ex_padj": 0.0142586624700435,
+        "Cur_padj": 0.0019861836915343,
+        "Pattern_Type": "Ex_vs_Cur",
+        "Description": "Down in Ex, Up in Current",
+        "magnitude": 1.5368925
+      },
+      {
+        "Gene": "ST3GAL6",
+        "Never_log2FC": 0.77307993,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": -0.74483323,
+        "Never_padj": 6.116366443855497e-07,
+        "Ex_padj": 1.0,
+        "Cur_padj": 1.6073051036874647e-08,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.51791316
+      },
+      {
+        "Gene": "ENG",
+        "Never_log2FC": 0.63424045,
+        "Ex_log2FC": -0.5051556,
+        "Cur_log2FC": -0.8741341,
+        "Never_padj": 3.7455881407014103e-23,
+        "Ex_padj": 2.603861345306316e-21,
+        "Cur_padj": 8.82442502418224e-25,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.50837455
+      },
+      {
+        "Gene": "ENG",
+        "Never_log2FC": 0.63424045,
+        "Ex_log2FC": -0.5051556,
+        "Cur_log2FC": -0.8741341,
+        "Never_padj": 3.7455881407014103e-23,
+        "Ex_padj": 2.603861345306316e-21,
+        "Cur_padj": 8.82442502418224e-25,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 1.50837455
+      },
+      {
+        "Gene": "MS4A4A",
+        "Never_log2FC": 0.9395742,
+        "Ex_log2FC": -0.5722343,
+        "Cur_log2FC": -0.54512686,
+        "Never_padj": 1.2103434633369354e-31,
+        "Ex_padj": 4.0765508790548937e-42,
+        "Cur_padj": 7.159962023047969e-20,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 1.48470106
+      },
+      {
+        "Gene": "MS4A4A",
+        "Never_log2FC": 0.9395742,
+        "Ex_log2FC": -0.5722343,
+        "Cur_log2FC": -0.54512686,
+        "Never_padj": 1.2103434633369354e-31,
+        "Ex_padj": 4.0765508790548937e-42,
+        "Cur_padj": 7.159962023047969e-20,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.48470106
+      },
+      {
+        "Gene": "SERPINA1",
+        "Never_log2FC": 0.6169517,
+        "Ex_log2FC": -1.1753025,
+        "Cur_log2FC": -0.8467803,
+        "Never_padj": 1.4416629185899193e-143,
+        "Ex_padj": 1.1037091069941653e-104,
+        "Cur_padj": 8.083716051263767e-52,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 1.463732
+      },
+      {
+        "Gene": "SERPINA1",
+        "Never_log2FC": 0.6169517,
+        "Ex_log2FC": -1.1753025,
+        "Cur_log2FC": -0.8467803,
+        "Never_padj": 1.4416629185899193e-143,
+        "Ex_padj": 1.1037091069941653e-104,
+        "Cur_padj": 8.083716051263767e-52,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Up in Never, Down in Current",
+        "magnitude": 1.463732
+      },
+      {
+        "Gene": "GBP5",
+        "Never_log2FC": -0.5839857,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": 0.8703044,
+        "Never_padj": 5.852714079673103e-08,
+        "Ex_padj": 1.0,
+        "Cur_padj": 6.992998305647654e-27,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Down in Never, Up in Current",
+        "magnitude": 1.4542901000000001
+      },
+      {
+        "Gene": "IFITM1",
+        "Never_log2FC": -0.61274016,
+        "Ex_log2FC": 0.0,
+        "Cur_log2FC": 0.84151757,
+        "Never_padj": 1.4324300190999906e-10,
+        "Ex_padj": 1.0,
+        "Cur_padj": 7.904300654195993e-101,
+        "Pattern_Type": "Never_vs_Cur",
+        "Description": "Down in Never, Up in Current",
+        "magnitude": 1.4542577300000001
+      },
+      {
+        "Gene": "CST3",
+        "Never_log2FC": 1.4480066,
+        "Ex_log2FC": -0.57922614,
+        "Cur_log2FC": 0.0,
+        "Never_padj": 0.0,
+        "Ex_padj": 1.252918790675164e-49,
+        "Cur_padj": 1.0,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 1.4480066
+      },
+      {
+        "Gene": "TPTEP1",
+        "Never_log2FC": 1.4370964,
+        "Ex_log2FC": -0.5441933,
+        "Cur_log2FC": 0.0,
+        "Never_padj": 1.4840847630639122e-24,
+        "Ex_padj": 0.004345585503848,
+        "Cur_padj": 1.0,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 1.4370964
+      },
+      {
+        "Gene": "SOBP",
+        "Never_log2FC": 1.4205308,
+        "Ex_log2FC": -0.9751266,
+        "Cur_log2FC": 0.0,
+        "Never_padj": 1.3898285109115959e-11,
+        "Ex_padj": 0.0299213306657089,
+        "Cur_padj": 1.0,
+        "Pattern_Type": "Never_vs_Ex",
+        "Description": "Up in Never, Down in Ex",
+        "magnitude": 1.4205308
+      }
+    ]
+  },
+  "cell_type_analysis": {
+    "cell_type_summary": [
+      {
+        "Cell_Type": "B_cells",
+        "Gene_Count": 6,
+        "Average_Magnitude": 1.9365110033333333
+      },
+      {
+        "Cell_Type": "B_cells_naive",
+        "Gene_Count": 49,
+        "Average_Magnitude": 1.8430233448979594
+      },
+      {
+        "Cell_Type": "Dendritic_cells",
+        "Gene_Count": 52,
+        "Average_Magnitude": 1.9671485425
+      },
+      {
+        "Cell_Type": "Endothelial_cells",
+        "Gene_Count": 5,
+        "Average_Magnitude": 1.8485140999999998
+      },
+      {
+        "Cell_Type": "Gamma_delta_T_cells",
+        "Gene_Count": 16,
+        "Average_Magnitude": 2.012105059375
+      },
+      {
+        "Cell_Type": "Hepatic_stellate_cells",
+        "Gene_Count": 119,
+        "Average_Magnitude": 2.5432095843697478
+      },
+      {
+        "Cell_Type": "Macrophages",
+        "Gene_Count": 77,
+        "Average_Magnitude": 2.039320078961039
+      },
+      {
+        "Cell_Type": "Mast_cells",
+        "Gene_Count": 17,
+        "Average_Magnitude": 2.1873183864705883
+      },
+      {
+        "Cell_Type": "Myoepithelial_cells",
+        "Gene_Count": 25,
+        "Average_Magnitude": 3.1050382864
+      },
+      {
+        "Cell_Type": "NK_cells",
+        "Gene_Count": 10,
+        "Average_Magnitude": 1.8096145150000003
+      },
+      {
+        "Cell_Type": "Neutrophils",
+        "Gene_Count": 22,
+        "Average_Magnitude": 1.9245165063636365
+      },
+      {
+        "Cell_Type": "Plasma_cells",
+        "Gene_Count": 23,
+        "Average_Magnitude": 2.3596905104347825
+      },
+      {
+        "Cell_Type": "Plasmacytoid_dendritic_cells",
+        "Gene_Count": 1,
+        "Average_Magnitude": 1.39589512
+      },
+      {
+        "Cell_Type": "Pulmonary_alveolar_type_II_cells",
+        "Gene_Count": 206,
+        "Average_Magnitude": 2.402051889368932
+      },
+      {
+        "Cell_Type": "T_cells",
+        "Gene_Count": 15,
+        "Average_Magnitude": 2.9503286953333334
+      },
+      {
+        "Cell_Type": "T_cytotoxic_cells",
+        "Gene_Count": 13,
+        "Average_Magnitude": 1.3508747007692308
+      },
+      {
+        "Cell_Type": "T_memory_cells",
+        "Gene_Count": 11,
+        "Average_Magnitude": 2.0515155972727275
+      }
+    ],
+    "top_genes_by_cell_type": {
+      "Macrophages": [
+        {
+          "Gene": "AC004556.1",
+          "Cell_Type": "Macrophages",
+          "Never_log2FC": 3.773797,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -1.2724006,
+          "Never_padj": 7.541287079027992e-08,
+          "Ex_padj": 1.0,
+          "Cur_padj": 0.0002908104919791,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 5.0461976
+        },
+        {
+          "Gene": "IGFBP2",
+          "Cell_Type": "Macrophages",
+          "Never_log2FC": -2.8477788,
+          "Ex_log2FC": -3.454296,
+          "Cur_log2FC": 0.84829146,
+          "Never_padj": 1.7224635506972222e-206,
+          "Ex_padj": 0.0,
+          "Cur_padj": 0.0012481901570042,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 4.30258746
+        },
+        {
+          "Gene": "DEFB1",
+          "Cell_Type": "Macrophages",
+          "Never_log2FC": -1.6805309,
+          "Ex_log2FC": -3.21337,
+          "Cur_log2FC": 0.8472988,
+          "Never_padj": 5.668727475483778e-94,
+          "Ex_padj": 1.812135292839612e-166,
+          "Cur_padj": 0.0448103421367224,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 4.0606688
+        },
+        {
+          "Gene": "IGF1",
+          "Cell_Type": "Macrophages",
+          "Never_log2FC": -0.771,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 3.279158,
+          "Never_padj": 1.776687221174847e-07,
+          "Ex_padj": 1.0,
+          "Cur_padj": 0.0012134782994946,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 4.050158
+        },
+        {
+          "Gene": "CCL18",
+          "Cell_Type": "Macrophages",
+          "Never_log2FC": -2.5746977,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 1.1995039,
+          "Never_padj": 0.0,
+          "Ex_padj": 1.0,
+          "Cur_padj": 2.167157863310766e-28,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 3.7742016000000005
+        }
+      ],
+      "T_cells": [
+        {
+          "Gene": "IGHA1",
+          "Cell_Type": "T_cells",
+          "Never_log2FC": 2.772149,
+          "Ex_log2FC": 1.2571955,
+          "Cur_log2FC": -2.0290263,
+          "Never_padj": 2.3881250129211734e-72,
+          "Ex_padj": 7.143380171360911e-13,
+          "Cur_padj": 5.094981889250082e-29,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 4.801175300000001
+        },
+        {
+          "Gene": "JCHAIN",
+          "Cell_Type": "T_cells",
+          "Never_log2FC": 2.7923589,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -1.7148654,
+          "Never_padj": 1.4051397498475486e-19,
+          "Ex_padj": 1.0,
+          "Cur_padj": 2.139007987216289e-06,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 4.5072243
+        },
+        {
+          "Gene": "IGHM",
+          "Cell_Type": "T_cells",
+          "Never_log2FC": 1.9055107,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -2.4545517,
+          "Never_padj": 1.2583833281882655e-06,
+          "Ex_padj": 1.0,
+          "Cur_padj": 5.284402711229674e-13,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 4.3600624
+        },
+        {
+          "Gene": "IGHG1",
+          "Cell_Type": "T_cells",
+          "Never_log2FC": 0.748053,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -2.5562515,
+          "Never_padj": 0.0123069190335113,
+          "Ex_padj": 1.0,
+          "Cur_padj": 9.862520123699512e-36,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 3.3043045
+        },
+        {
+          "Gene": "IGHA1",
+          "Cell_Type": "T_cells",
+          "Never_log2FC": 2.772149,
+          "Ex_log2FC": 1.2571955,
+          "Cur_log2FC": -2.0290263,
+          "Never_padj": 2.3881250129211734e-72,
+          "Ex_padj": 7.143380171360911e-13,
+          "Cur_padj": 5.094981889250082e-29,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 3.2862218
+        }
+      ],
+      "Plasma_cells": [
+        {
+          "Gene": "APOE",
+          "Cell_Type": "Plasma_cells",
+          "Never_log2FC": 1.0501527,
+          "Ex_log2FC": 2.2582204,
+          "Cur_log2FC": -1.8274597,
+          "Never_padj": 0.0032555776961466,
+          "Ex_padj": 2.179610907234893e-16,
+          "Cur_padj": 6.754760540291843e-29,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 4.085680099999999
+        },
+        {
+          "Gene": "CCL3L3",
+          "Cell_Type": "Plasma_cells",
+          "Never_log2FC": 2.8439722,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -1.1631895,
+          "Never_padj": 0.0158600557873064,
+          "Ex_padj": 1.0,
+          "Cur_padj": 1.4527566901078858e-05,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 4.0071617
+        },
+        {
+          "Gene": "IGHA1",
+          "Cell_Type": "Plasma_cells",
+          "Never_log2FC": 2.5634882,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -1.4087378,
+          "Never_padj": 9.04666053971102e-12,
+          "Ex_padj": 1.0,
+          "Cur_padj": 2.7788598109807918e-21,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 3.972226
+        },
+        {
+          "Gene": "JCHAIN",
+          "Cell_Type": "Plasma_cells",
+          "Never_log2FC": 1.3409607,
+          "Ex_log2FC": -2.3610704,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 0.0001678063695092,
+          "Ex_padj": 2.511270353954181e-16,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 3.7020311
+        },
+        {
+          "Gene": "CCL4L2",
+          "Cell_Type": "Plasma_cells",
+          "Never_log2FC": 2.3439522,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -1.1709373,
+          "Never_padj": 0.0001812069182084,
+          "Ex_padj": 1.0,
+          "Cur_padj": 0.0010936987610808,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 3.5148894999999998
+        }
+      ],
+      "Mast_cells": [
+        {
+          "Gene": "RPS4Y1",
+          "Cell_Type": "Mast_cells",
+          "Never_log2FC": 2.3522823,
+          "Ex_log2FC": -1.5080333,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 1.227243407925144e-21,
+          "Ex_padj": 2.2679367435990085e-11,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 3.8603156
+        },
+        {
+          "Gene": "SFTPC",
+          "Cell_Type": "Mast_cells",
+          "Never_log2FC": -0.782104,
+          "Ex_log2FC": 1.8184872,
+          "Cur_log2FC": -1.7648915,
+          "Never_padj": 0.0046895032699455,
+          "Ex_padj": 0.0001829908555826,
+          "Cur_padj": 4.2464607534953826e-15,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 3.5833787
+        },
+        {
+          "Gene": "CREM",
+          "Cell_Type": "Mast_cells",
+          "Never_log2FC": 0.9903582,
+          "Ex_log2FC": -1.9204608,
+          "Cur_log2FC": 0.9969079,
+          "Never_padj": 5.14665830063359e-07,
+          "Ex_padj": 5.458939172284411e-16,
+          "Cur_padj": 0.0001197351362595,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 2.9173687
+        },
+        {
+          "Gene": "CREM",
+          "Cell_Type": "Mast_cells",
+          "Never_log2FC": 0.9903582,
+          "Ex_log2FC": -1.9204608,
+          "Cur_log2FC": 0.9969079,
+          "Never_padj": 5.14665830063359e-07,
+          "Ex_padj": 5.458939172284411e-16,
+          "Cur_padj": 0.0001197351362595,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 2.910819
+        },
+        {
+          "Gene": "BIRC3",
+          "Cell_Type": "Mast_cells",
+          "Never_log2FC": 1.2891923,
+          "Ex_log2FC": -1.6070442,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 2.4811914948045816e-11,
+          "Ex_padj": 1.755862652048417e-09,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 2.8962365
+        }
+      ],
+      "T_cytotoxic_cells": [
+        {
+          "Gene": "MARCKSL1",
+          "Cell_Type": "T_cytotoxic_cells",
+          "Never_log2FC": -1.1065092,
+          "Ex_log2FC": 0.7427579,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 4.555613655682521e-05,
+          "Ex_padj": 0.0420306003990227,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 1.8492671
+        },
+        {
+          "Gene": "SH2D2A",
+          "Cell_Type": "T_cytotoxic_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -0.59571856,
+          "Cur_log2FC": 1.1452172,
+          "Never_padj": 1.0,
+          "Ex_padj": 0.0019982544148492,
+          "Cur_padj": 5.112925959609228e-06,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 1.7409357600000002
+        },
+        {
+          "Gene": "HLA-DQA1",
+          "Cell_Type": "T_cytotoxic_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -0.64246833,
+          "Cur_log2FC": 1.0737702,
+          "Never_padj": 1.0,
+          "Ex_padj": 0.0011022526312247,
+          "Cur_padj": 8.662602489592055e-10,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 1.71623853
+        },
+        {
+          "Gene": "NEAT1",
+          "Cell_Type": "T_cytotoxic_cells",
+          "Never_log2FC": -0.5732672,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 0.8767218,
+          "Never_padj": 2.680902243899966e-10,
+          "Ex_padj": 1.0,
+          "Cur_padj": 1.4277315596631969e-18,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 1.449989
+        },
+        {
+          "Gene": "HLA-DRB5",
+          "Cell_Type": "T_cytotoxic_cells",
+          "Never_log2FC": -0.5161543,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 0.89426744,
+          "Never_padj": 0.0196307099273813,
+          "Ex_padj": 1.0,
+          "Cur_padj": 0.0026979210258595,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 1.4104217399999999
+        }
+      ],
+      "NK_cells": [
+        {
+          "Gene": "RPS26",
+          "Cell_Type": "NK_cells",
+          "Never_log2FC": 0.56345576,
+          "Ex_log2FC": -1.293881,
+          "Cur_log2FC": 1.6907083,
+          "Never_padj": 2.274942285211935e-13,
+          "Ex_padj": 4.515921739573237e-44,
+          "Cur_padj": 1.0611082520608942e-65,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 2.9845893
+        },
+        {
+          "Gene": "RGS1",
+          "Cell_Type": "NK_cells",
+          "Never_log2FC": -0.7637319,
+          "Ex_log2FC": 0.66241884,
+          "Cur_log2FC": -1.5668249,
+          "Never_padj": 2.2870918922710527e-08,
+          "Ex_padj": 2.7081164717863644e-05,
+          "Cur_padj": 6.081301162589512e-33,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 2.2292437400000003
+        },
+        {
+          "Gene": "RGCC",
+          "Cell_Type": "NK_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": 0.8663985,
+          "Cur_log2FC": -1.256512,
+          "Never_padj": 1.0,
+          "Ex_padj": 5.653942876307475e-06,
+          "Cur_padj": 2.4098871191111595e-08,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 2.1229105
+        },
+        {
+          "Gene": "CCL3L3",
+          "Cell_Type": "NK_cells",
+          "Never_log2FC": 0.51600045,
+          "Ex_log2FC": -1.2191235,
+          "Cur_log2FC": -1.40111,
+          "Never_padj": 0.0015240444981041,
+          "Ex_padj": 6.814002801540126e-16,
+          "Cur_padj": 2.888831080220521e-17,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 1.91711045
+        },
+        {
+          "Gene": "RPS26",
+          "Cell_Type": "NK_cells",
+          "Never_log2FC": 0.56345576,
+          "Ex_log2FC": -1.293881,
+          "Cur_log2FC": 1.6907083,
+          "Never_padj": 2.274942285211935e-13,
+          "Ex_padj": 4.515921739573237e-44,
+          "Cur_padj": 1.0611082520608942e-65,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 1.85733676
+        }
+      ],
+      "Myoepithelial_cells": [
+        {
+          "Gene": "SFTPC",
+          "Cell_Type": "Myoepithelial_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": 5.646197,
+          "Cur_log2FC": -2.6577446,
+          "Never_padj": 1.0,
+          "Ex_padj": 1.367105852078828e-38,
+          "Cur_padj": 0.0002399308389242,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 8.3039416
+        },
+        {
+          "Gene": "IGHG3",
+          "Cell_Type": "Myoepithelial_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": 2.2853363,
+          "Cur_log2FC": -2.5319488,
+          "Never_padj": 1.0,
+          "Ex_padj": 1.4614489081197514e-11,
+          "Cur_padj": 0.0014574629854316,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 4.817285099999999
+        },
+        {
+          "Gene": "ALOX5AP",
+          "Cell_Type": "Myoepithelial_cells",
+          "Never_log2FC": 2.9821558,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -1.4638985,
+          "Never_padj": 1.51604105636741e-17,
+          "Ex_padj": 1.0,
+          "Cur_padj": 0.0320787233709815,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 4.4460543
+        },
+        {
+          "Gene": "IGKC",
+          "Cell_Type": "Myoepithelial_cells",
+          "Never_log2FC": -1.3531804,
+          "Ex_log2FC": 2.3284698,
+          "Cur_log2FC": -2.0038524,
+          "Never_padj": 1.999741656152212e-07,
+          "Ex_padj": 3.633261678971295e-24,
+          "Cur_padj": 0.0001199701943153,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 4.3323222
+        },
+        {
+          "Gene": "HLA-DQA2",
+          "Cell_Type": "Myoepithelial_cells",
+          "Never_log2FC": 1.2659805,
+          "Ex_log2FC": -2.680172,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 0.0436184651888388,
+          "Ex_padj": 0.0007237005900651,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 3.9461525
+        }
+      ],
+      "B_cells": [
+        {
+          "Gene": "HLA-DQB1",
+          "Cell_Type": "B_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": 1.3796229,
+          "Cur_log2FC": -1.1251725,
+          "Never_padj": 1.0,
+          "Ex_padj": 0.0007983943151591,
+          "Cur_padj": 0.0254193157651019,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 2.5047954
+        },
+        {
+          "Gene": "HLA-DPB1",
+          "Cell_Type": "B_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": 0.90340495,
+          "Cur_log2FC": -1.4855044,
+          "Never_padj": 1.0,
+          "Ex_padj": 0.0092055974693003,
+          "Cur_padj": 9.349926480342016e-06,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 2.38890935
+        },
+        {
+          "Gene": "HLA-B",
+          "Cell_Type": "B_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": 0.8415747,
+          "Cur_log2FC": -1.516412,
+          "Never_padj": 1.0,
+          "Ex_padj": 0.0164080506257664,
+          "Cur_padj": 3.0718235849063454e-08,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 2.3579867
+        },
+        {
+          "Gene": "RPS10",
+          "Cell_Type": "B_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -0.6826552,
+          "Cur_log2FC": 1.1406442,
+          "Never_padj": 1.0,
+          "Ex_padj": 4.9479803648170965e-05,
+          "Cur_padj": 4.4448160492896813e-13,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 1.8232994000000002
+        },
+        {
+          "Gene": "RPS21",
+          "Cell_Type": "B_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -0.64588654,
+          "Cur_log2FC": 0.7375226,
+          "Never_padj": 1.0,
+          "Ex_padj": 2.507603181359329e-06,
+          "Cur_padj": 1.0089105641769686e-05,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 1.38340914
+        }
+      ],
+      "Pulmonary_alveolar_type_II_cells": [
+        {
+          "Gene": "XIST",
+          "Cell_Type": "Pulmonary_alveolar_type_II_cells",
+          "Never_log2FC": -4.5238047,
+          "Ex_log2FC": 31.944511,
+          "Cur_log2FC": -2.060657,
+          "Never_padj": 4.8748769625414944e-23,
+          "Ex_padj": 1.098706792000766e-148,
+          "Cur_padj": 0.0254971849260646,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 36.4683157
+        },
+        {
+          "Gene": "XIST",
+          "Cell_Type": "Pulmonary_alveolar_type_II_cells",
+          "Never_log2FC": -4.5238047,
+          "Ex_log2FC": 31.944511,
+          "Cur_log2FC": -2.060657,
+          "Never_padj": 4.8748769625414944e-23,
+          "Ex_padj": 1.098706792000766e-148,
+          "Cur_padj": 0.0254971849260646,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 34.005168
+        },
+        {
+          "Gene": "SCGB3A1",
+          "Cell_Type": "Pulmonary_alveolar_type_II_cells",
+          "Never_log2FC": 1.8783027,
+          "Ex_log2FC": -3.0333865,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 7.985736895992657e-45,
+          "Ex_padj": 3.314504677460135e-45,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 4.9116892000000005
+        },
+        {
+          "Gene": "AARD",
+          "Cell_Type": "Pulmonary_alveolar_type_II_cells",
+          "Never_log2FC": 1.9544944,
+          "Ex_log2FC": -2.7362275,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 5.977464620486115e-07,
+          "Ex_padj": 0.0002346327759519,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 4.6907219
+        },
+        {
+          "Gene": "PARVB",
+          "Cell_Type": "Pulmonary_alveolar_type_II_cells",
+          "Never_log2FC": 2.0991828,
+          "Ex_log2FC": -2.5271456,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 1.825550692525718e-05,
+          "Ex_padj": 0.0029667456228667,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 4.6263284
+        }
+      ],
+      "T_memory_cells": [
+        {
+          "Gene": "RPS26",
+          "Cell_Type": "T_memory_cells",
+          "Never_log2FC": -0.5288461,
+          "Ex_log2FC": -2.0061176,
+          "Cur_log2FC": 1.3118212,
+          "Never_padj": 8.533637719484077e-25,
+          "Ex_padj": 4.68495223494362e-306,
+          "Cur_padj": 2.693704830105557e-51,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 3.3179388000000003
+        },
+        {
+          "Gene": "JCHAIN",
+          "Cell_Type": "T_memory_cells",
+          "Never_log2FC": 1.100514,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -1.8080997,
+          "Never_padj": 0.028034774070493,
+          "Ex_padj": 1.0,
+          "Cur_padj": 8.267299700522289e-14,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 2.9086137
+        },
+        {
+          "Gene": "FBLN5",
+          "Cell_Type": "T_memory_cells",
+          "Never_log2FC": -0.6941058,
+          "Ex_log2FC": 1.0168314,
+          "Cur_log2FC": -1.3972033,
+          "Never_padj": 0.0416715225669883,
+          "Ex_padj": 1.967767256243333e-06,
+          "Cur_padj": 2.004872831495675e-12,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 2.4140347
+        },
+        {
+          "Gene": "POLR2J3",
+          "Cell_Type": "T_memory_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": 1.1088834,
+          "Cur_log2FC": -0.93341506,
+          "Never_padj": 1.0,
+          "Ex_padj": 3.661280251651999e-49,
+          "Cur_padj": 1.8859133457398929e-57,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 2.04229846
+        },
+        {
+          "Gene": "AC004951.6",
+          "Cell_Type": "T_memory_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": 0.79768986,
+          "Cur_log2FC": -1.1532302,
+          "Never_padj": 1.0,
+          "Ex_padj": 0.0403733832808115,
+          "Cur_padj": 0.0002206819421667,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 1.95092006
+        }
+      ],
+      "Gamma_delta_T_cells": [
+        {
+          "Gene": "SCGB3A1",
+          "Cell_Type": "Gamma_delta_T_cells",
+          "Never_log2FC": -2.2641287,
+          "Ex_log2FC": 2.7399433,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 2.3069665104169977e-41,
+          "Ex_padj": 2.278397237097784e-40,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 5.004072000000001
+        },
+        {
+          "Gene": "HBB",
+          "Cell_Type": "Gamma_delta_T_cells",
+          "Never_log2FC": -1.6047757,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 1.8706237,
+          "Never_padj": 0.0010656055033511,
+          "Ex_padj": 1.0,
+          "Cur_padj": 1.6808989167336253e-27,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 3.4753993999999997
+        },
+        {
+          "Gene": "HLA-DRB5",
+          "Cell_Type": "Gamma_delta_T_cells",
+          "Never_log2FC": -1.278287,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 0.9512845,
+          "Never_padj": 4.901128461957339e-09,
+          "Ex_padj": 1.0,
+          "Cur_padj": 3.2552445612402524e-06,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 2.2295715
+        },
+        {
+          "Gene": "FOSB",
+          "Cell_Type": "Gamma_delta_T_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": 0.9613463,
+          "Cur_log2FC": -1.2390016,
+          "Never_padj": 1.0,
+          "Ex_padj": 6.322721422258793e-09,
+          "Cur_padj": 2.923420647058972e-12,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 2.2003478999999997
+        },
+        {
+          "Gene": "CD3D",
+          "Cell_Type": "Gamma_delta_T_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -1.3427056,
+          "Cur_log2FC": 0.6432025,
+          "Never_padj": 1.0,
+          "Ex_padj": 2.529538821038054e-25,
+          "Cur_padj": 1.363369159901765e-06,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 1.9859081
+        }
+      ],
+      "B_cells_naive": [
+        {
+          "Gene": "RPS26",
+          "Cell_Type": "B_cells_naive",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -1.8396605,
+          "Cur_log2FC": 1.596637,
+          "Never_padj": 1.0,
+          "Ex_padj": 2.747220571493667e-138,
+          "Cur_padj": 3.1238917458335674e-119,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 3.4362975000000002
+        },
+        {
+          "Gene": "IGHG4",
+          "Cell_Type": "B_cells_naive",
+          "Never_log2FC": -0.5852122,
+          "Ex_log2FC": 0.53957087,
+          "Cur_log2FC": -2.6248467,
+          "Never_padj": 4.120585767140164e-09,
+          "Ex_padj": 0.0084900391444727,
+          "Cur_padj": 8.628780043061436e-182,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 3.16441757
+        },
+        {
+          "Gene": "APOE",
+          "Cell_Type": "B_cells_naive",
+          "Never_log2FC": 2.0724545,
+          "Ex_log2FC": 2.1448596,
+          "Cur_log2FC": -1.0086892,
+          "Never_padj": 6.802438950102488e-32,
+          "Ex_padj": 5.087103735898059e-10,
+          "Cur_padj": 2.5083619095396498e-11,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 3.1535488000000003
+        },
+        {
+          "Gene": "IGHA2",
+          "Cell_Type": "B_cells_naive",
+          "Never_log2FC": 1.6611629,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -1.4638325,
+          "Never_padj": 6.375349143025773e-14,
+          "Ex_padj": 1.0,
+          "Cur_padj": 6.293519626210205e-06,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 3.1249954000000004
+        },
+        {
+          "Gene": "APOE",
+          "Cell_Type": "B_cells_naive",
+          "Never_log2FC": 2.0724545,
+          "Ex_log2FC": 2.1448596,
+          "Cur_log2FC": -1.0086892,
+          "Never_padj": 6.802438950102488e-32,
+          "Ex_padj": 5.087103735898059e-10,
+          "Cur_padj": 2.5083619095396498e-11,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 3.0811437
+        }
+      ],
+      "Neutrophils": [
+        {
+          "Gene": "HBA2",
+          "Cell_Type": "Neutrophils",
+          "Never_log2FC": -1.9189409,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 3.3348815,
+          "Never_padj": 0.0254706845774437,
+          "Ex_padj": 1.0,
+          "Cur_padj": 7.131581586523365e-05,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 5.2538224
+        },
+        {
+          "Gene": "HBB",
+          "Cell_Type": "Neutrophils",
+          "Never_log2FC": -1.6926713,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 3.1754174,
+          "Never_padj": 0.0002292610863496,
+          "Ex_padj": 1.0,
+          "Cur_padj": 5.984696191977595e-05,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 4.8680887
+        },
+        {
+          "Gene": "APOBEC3A",
+          "Cell_Type": "Neutrophils",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -1.407062,
+          "Cur_log2FC": 1.7542498,
+          "Never_padj": 1.0,
+          "Ex_padj": 5.208228697867975e-06,
+          "Cur_padj": 5.2485885641615854e-05,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 3.1613118
+        },
+        {
+          "Gene": "IRF1",
+          "Cell_Type": "Neutrophils",
+          "Never_log2FC": -1.1463788,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 0.94848144,
+          "Never_padj": 2.4747407114281774e-19,
+          "Ex_padj": 1.0,
+          "Cur_padj": 0.0020552629677977,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 2.09486024
+        },
+        {
+          "Gene": "PTGS2",
+          "Cell_Type": "Neutrophils",
+          "Never_log2FC": -0.7534829,
+          "Ex_log2FC": 1.1086928,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 3.185988405167198e-05,
+          "Ex_padj": 3.1425757780887984e-08,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 1.8621756999999999
+        }
+      ],
+      "Hepatic_stellate_cells": [
+        {
+          "Gene": "SLPI",
+          "Cell_Type": "Hepatic_stellate_cells",
+          "Never_log2FC": -1.8859625,
+          "Ex_log2FC": -4.336832,
+          "Cur_log2FC": 2.2531385,
+          "Never_padj": 2.373050245536958e-05,
+          "Ex_padj": 2.4678417011721947e-55,
+          "Cur_padj": 0.0025418700319761,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 6.5899705
+        },
+        {
+          "Gene": "LINC01133",
+          "Cell_Type": "Hepatic_stellate_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -3.469509,
+          "Cur_log2FC": 2.6270473,
+          "Never_padj": 1.0,
+          "Ex_padj": 2.136141537920712e-05,
+          "Cur_padj": 0.0062884714464606,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 6.0965563
+        },
+        {
+          "Gene": "SGK1",
+          "Cell_Type": "Hepatic_stellate_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -1.1555644,
+          "Cur_log2FC": 4.662067,
+          "Never_padj": 1.0,
+          "Ex_padj": 2.778230539222767e-05,
+          "Cur_padj": 4.5785832471012734e-05,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 5.817631400000001
+        },
+        {
+          "Gene": "HAS1",
+          "Cell_Type": "Hepatic_stellate_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -2.334307,
+          "Cur_log2FC": 2.9352276,
+          "Never_padj": 1.0,
+          "Ex_padj": 2.022013830754054e-09,
+          "Cur_padj": 0.0047123501141002,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 5.2695346
+        },
+        {
+          "Gene": "IL18",
+          "Cell_Type": "Hepatic_stellate_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -2.4235623,
+          "Cur_log2FC": 2.1969292,
+          "Never_padj": 1.0,
+          "Ex_padj": 0.0084017044381709,
+          "Cur_padj": 0.0177695301658438,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 4.6204915
+        }
+      ],
+      "Endothelial_cells": [
+        {
+          "Gene": "ICAM1",
+          "Cell_Type": "Endothelial_cells",
+          "Never_log2FC": 1.4998045,
+          "Ex_log2FC": -1.0664169,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 4.580028666256249e-05,
+          "Ex_padj": 0.0411592694581959,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 2.5662214
+        },
+        {
+          "Gene": "EGR1",
+          "Cell_Type": "Endothelial_cells",
+          "Never_log2FC": 0.91573447,
+          "Ex_log2FC": -0.9683097,
+          "Cur_log2FC": 0.0,
+          "Never_padj": 0.0064938974150621,
+          "Ex_padj": 0.0017138917451623,
+          "Cur_padj": 1.0,
+          "Comparison": "Never_vs_Ex",
+          "Magnitude": 1.8840441700000001
+        },
+        {
+          "Gene": "NNMT",
+          "Cell_Type": "Endothelial_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -0.6408501,
+          "Cur_log2FC": 1.0730733,
+          "Never_padj": 1.0,
+          "Ex_padj": 0.0381363872525338,
+          "Cur_padj": 0.0306216756097892,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 1.7139233999999999
+        },
+        {
+          "Gene": "CD9",
+          "Cell_Type": "Endothelial_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": -0.82310146,
+          "Cur_log2FC": 0.82880485,
+          "Never_padj": 1.0,
+          "Ex_padj": 0.0125313050864527,
+          "Cur_padj": 0.0447795956598916,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 1.65190631
+        },
+        {
+          "Gene": "ID1",
+          "Cell_Type": "Endothelial_cells",
+          "Never_log2FC": 0.0,
+          "Ex_log2FC": 0.68901896,
+          "Cur_log2FC": -0.73745626,
+          "Never_padj": 1.0,
+          "Ex_padj": 0.0106976727776193,
+          "Cur_padj": 0.038554160622444,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 1.42647522
+        }
+      ],
+      "Dendritic_cells": [
+        {
+          "Gene": "SERPING1",
+          "Cell_Type": "Dendritic_cells",
+          "Never_log2FC": -1.5619155,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 2.8271794,
+          "Never_padj": 0.0001775421411914,
+          "Ex_padj": 1.0,
+          "Cur_padj": 1.0371829800420822e-36,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 4.3890949
+        },
+        {
+          "Gene": "ALDH1A1",
+          "Cell_Type": "Dendritic_cells",
+          "Never_log2FC": -1.9090614,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 1.640755,
+          "Never_padj": 0.0134804838552318,
+          "Ex_padj": 1.0,
+          "Cur_padj": 0.0266911944239982,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 3.5498164
+        },
+        {
+          "Gene": "CFD",
+          "Cell_Type": "Dendritic_cells",
+          "Never_log2FC": 0.66481215,
+          "Ex_log2FC": -1.1491755,
+          "Cur_log2FC": 2.311273,
+          "Never_padj": 0.010109638070737,
+          "Ex_padj": 1.343875529192212e-06,
+          "Cur_padj": 8.347683321613892e-27,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 3.4604485
+        },
+        {
+          "Gene": "RGS1",
+          "Cell_Type": "Dendritic_cells",
+          "Never_log2FC": -0.9721893,
+          "Ex_log2FC": 1.3652748,
+          "Cur_log2FC": -1.6998485,
+          "Never_padj": 5.658724849010293e-15,
+          "Ex_padj": 1.4715826249299445e-21,
+          "Cur_padj": 5.291694663944828e-30,
+          "Comparison": "Ex_vs_Cur",
+          "Magnitude": 3.0651232999999998
+        },
+        {
+          "Gene": "GBP1",
+          "Cell_Type": "Dendritic_cells",
+          "Never_log2FC": -0.80365264,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": 2.2188828,
+          "Never_padj": 0.01136164142803,
+          "Ex_padj": 1.0,
+          "Cur_padj": 3.095007139494449e-39,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 3.02253544
+        }
+      ],
+      "Plasmacytoid_dendritic_cells": [
+        {
+          "Gene": "LSP1",
+          "Cell_Type": "Plasmacytoid_dendritic_cells",
+          "Never_log2FC": 0.66885656,
+          "Ex_log2FC": 0.0,
+          "Cur_log2FC": -0.72703856,
+          "Never_padj": 0.0093555790162882,
+          "Ex_padj": 1.0,
+          "Cur_padj": 0.0021240829114801,
+          "Comparison": "Never_vs_Cur",
+          "Magnitude": 1.39589512
+        }
+      ]
+    }
+  },
+  "top_genes": {},
+  "immune_inflammatory_genes": {
+    "GBP1": {
+      "Never_log2FC": -0.5811761,
+      "Ex_log2FC": 0.0,
+      "Cur_log2FC": 0.5432077,
+      "Never_padj": 1.2411434252227466e-10,
+      "Ex_padj": 1.0,
+      "Cur_padj": 2.1760435499379518e-10
+    },
+    "GBP4": {
+      "Never_log2FC": -0.78028584,
+      "Ex_log2FC": 0.0,
+      "Cur_log2FC": 0.0,
+      "Never_padj": 3.972745123506557e-14,
+      "Ex_padj": 1.0,
+      "Cur_padj": 1.0
+    },
+    "GBP5": {
+      "Never_log2FC": -0.5839857,
+      "Ex_log2FC": 0.0,
+      "Cur_log2FC": 0.8703044,
+      "Never_padj": 5.852714079673103e-08,
+      "Ex_padj": 1.0,
+      "Cur_padj": 6.992998305647654e-27
+    },
+    "SERPING1": {
+      "Never_log2FC": -1.0917935,
+      "Ex_log2FC": -1.7924172,
+      "Cur_log2FC": 0.0,
+      "Never_padj": 1.0171387485664141e-23,
+      "Ex_padj": 1.5960544503356134e-206,
+      "Cur_padj": 1.0
+    },
+    "IRF1": {
+      "Never_log2FC": -0.58829373,
+      "Ex_log2FC": 0.0,
+      "Cur_log2FC": 0.50504446,
+      "Never_padj": 4.582322429597168e-63,
+      "Ex_padj": 1.0,
+      "Cur_padj": 1.894723943654715e-89
+    },
+    "AKR1C3": {
+      "Never_log2FC": 0.79495645,
+      "Ex_log2FC": -1.6303359,
+      "Cur_log2FC": -1.2106597,
+      "Never_padj": 6.468394282126547e-28,
+      "Ex_padj": 1.1278266400126608e-56,
+      "Cur_padj": 6.398331890017799e-19
+    },
+    "CD38": {
+      "Never_log2FC": -0.69742465,
+      "Ex_log2FC": 0.54572827,
+      "Cur_log2FC": 0.6509922,
+      "Never_padj": 0.0121756207859661,
+      "Ex_padj": 5.4641620621480395e-09,
+      "Cur_padj": 1.952720158604728e-10
+    },
+    "ENG": {
+      "Never_log2FC": 0.63424045,
+      "Ex_log2FC": -0.5051556,
+      "Cur_log2FC": -0.8741341,
+      "Never_padj": 3.7455881407014103e-23,
+      "Ex_padj": 2.603861345306316e-21,
+      "Cur_padj": 8.82442502418224e-25
+    }
+  }
+}
