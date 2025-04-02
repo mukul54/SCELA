@@ -60,7 +60,7 @@ SCELA/
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.10+
 - Conda environment
 
 ## Environment Setup
@@ -69,7 +69,7 @@ Create and activate a new conda environment:
 
 ```bash
 # Create conda environment
-conda create -n scela python=3.8
+conda create -n scela python=3.10
 conda activate scela
 
 # Install the required packages
