@@ -49,13 +49,13 @@ SCELA/
 ├── sex_analysis/                     # Additional sex-related analyses and results
 ├── smoking_analysis/                 # Additional smoking-related analyses and results
 ├── figures/                          # Generated figures and plots
-└── data/                             # Data directory (not included in repo)
+└── data/                             # Data directory (not included in repo, download from hf)
     └── GSE131907/                    # Contains raw and processed data files
         ├── GSE131907_raw_UMI_matrix.txt
         ├── GSE131907_cell_annotation.txt.gz
         ├── GSE131907_metadata.csv
         ├── GSE131907_processed.h5
-        └── GSE131907_anndata.h5ad
+        └── age_celltype_annotation.h5ad.h5ad
 ```
 
 ## Requirements
@@ -126,10 +126,10 @@ Analyze differential gene expression across age groups:
 
 ```bash
 # Run age-stratified analysis
-python src/age/age_tumor_normal_degs.py --age_cutoff 65 --output_dir results/age_degs
+python src/age/age_tumor_normal_degs.py
 
 # Generate age-specific visualization
-python data_analysis/age/age_tumor_analysis_post.py --base_dir results/age_degs --output_dir figures/age_analysis
+python data_analysis/age/age_tumor_analysis_post.py
 ```
 
 ### Smoking-Specific Analysis
@@ -138,10 +138,10 @@ Analyze differential gene expression between smokers and non-smokers:
 
 ```bash
 # Run smoking-specific DEG analysis
-python src/smoking/smoking_specific_degs.py --output_dir results/smoking_degs
+python src/smoking/smoking_specific_degs.py
 
 # Visualize smoking-specific patterns
-python data_analysis/smoking/smoking_tumor_analysis.py --base_dir results/smoking_degs --output_dir figures/smoking_analysis
+python data_analysis/smoking/smoking_tumor_analysis.py
 ```
 
 ## Key Features
